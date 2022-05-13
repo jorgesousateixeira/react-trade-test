@@ -1,0 +1,53 @@
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    background: lightcoral;
+}
+.loginContainer {
+    margin: 10em auto auto auto;
+    width: 25em;
+    vertical-align: center;
+    font-family: 'JetBrains Mono', monospace;
+}
+.loginBox {
+    margin-top: 1em;
+    /* background: lightcoral; */
+    border-top: 1px solid #ccc;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    /* border: 1px solid red; */
+}
+.loginBox form {
+    padding: 1.5em;
+    display: block;
+}
+.loginBox button {
+    margin-top: 1em;
+}
+.loginData {
+    margin-bottom: 1em;
+}
+.loginBox .loginBtn {
+    width: 100%;
+    margin-top: 3em;
+}
+.loginFormTitle {
+    padding-bottom: 2em;
+    font-family: 'Jost', sans-serif;
+    font-size: 1.1em;
+}
+.appName {
+    font-size: 1.2rem;
+    letter-spacing: .5px;
+    font-weight: 700;
+}
+.appName2 {
+    font-weight: 300;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+.enterCredentials{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    color: rgba(158, 158, 158, 0.7);
+}

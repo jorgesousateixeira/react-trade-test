@@ -1,0 +1,20 @@
+.formMessageCriteria {
+ display: block;
+}
+.divMessageCriteria {
+    display: grid;
+    grid-row-gap: var(--search-card-grid-row-gap);
+    grid-column-gap: var(--search-card-grid-column-gap);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "stDate stDate enDate enDate"
+    "origin origin destin destin"
+    "type type . ."
+}
+
+.divMessageCriteria .startDate { grid-area: stDate; }
+.divMessageCriteria .endDate { grid-area: enDate; }
+.divMessageCriteria .origin { grid-area: origin; }
+.divMessageCriteria .destination { grid-area: destin; }
+.divMessageCriteria .type { grid-area: type; }

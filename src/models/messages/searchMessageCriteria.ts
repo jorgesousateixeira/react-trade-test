@@ -1,0 +1,24 @@
+export interface SearchMessageCriteria {
+    pageNumber: number;
+    StartDate: string;
+    EndDate: string;
+    Origin: string;
+    Destination: string;
+    Type: string;
+    Direction: string;
+    ExcludeAck: string;
+    Filter: string;
+    Address: string;
+    SubjectContains: string;
+    Status: string;
+    NoHousekeeping: string;
+    Housekeeped: string;
+    SortAsc: string;
+    Cause: string;
+    NoFilter: string;
+    BodyEnvelopOrigin: string;
+    BodyEnvelopDestination: string;
+    ProcessingStatus: string;
+    MessagePropertyValue: string;
+    MessagePropertyValueStartsWith: string;
+};

@@ -1,57 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
+import {PublicHome} from "./public/home/publicHome";
+import {PrivateHome} from "./private/home/privateHome";
+import {ToastContainer} from "react-toastify";
+import { Routes, Route } from 'react-router-dom';
+import {Login} from "./public/login/login";
+import {Messages} from "./private/messages/messages";
+import {Documents} from "./private/documents/documents";
+import {Settings} from "./private/settings/settings";
+import {Administration} from "./private/admin/admin";
+import {Partners} from "./private/partners/partners";
+import {PrivateContainer} from "./private/private";
+import Users from "./private/users/users";
+import UserDetails from "./private/users/userDetailsViaStore";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+      <div className="App">
+          <Routes>
+              <Route path="/" element={<PublicHome />} />
+              <Route path="/public" element={<PublicHome />} />
+              <Route path="/public/login" element={<Login />} />
+              <Route path="/private" element={<PrivateContainer />}>
+                  <Route path='/private/home' element={<PrivateHome/>}/>
+                  <Route path='/private/messages' element={<Messages/>}/>
+                  <Route path='/private/documents' element={<Documents/>}/>
+                  <Route path='/private/partners' element={<Partners/>}/>
+                  <Route path='/private/users' element={<Users />}/>
+                  <Route path="/private/users/:id" element={<UserDetails />} />
+                  <Route path='/private/settings' element={<Settings/>}/>
+                  <Route path='/private/admin' element={<Administration/>}/>
+              </Route>
+          </Routes>
+        <ToastContainer autoClose={3000} hideProgressBar />
+      </div>
   );
 }
 

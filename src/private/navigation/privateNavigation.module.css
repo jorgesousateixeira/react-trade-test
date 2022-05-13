@@ -1,0 +1,40 @@
+.navContainer {
+    border-right: 1px solid #d6d6d6;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 0 32px 0 32px;
+    height: 100vh;
+}
+.navContainer .nav a {
+    text-decoration: none;
+    display: block;
+    margin: 2.5em;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(var(--rgb-dark-neutral-color), .4);
+    font-weight: 700;
+    border: 2px solid transparent;
+    padding-bottom: 0.3rem;
+}
+.navContainer .nav a:visited {
+    color: var(--text-primary);
+}
+.navContainer .nav a:hover {
+    color: var(--main-color);
+}
+.navContainer span.active {
+    border-bottom: 3px solid var(--main-color);
+}
+.navContainer .appName{
+    margin-top: 1em;
+    color: var(--text-primary);
+    font-size: 1.1em;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.navContainer .userAndSignature {
+
+}
