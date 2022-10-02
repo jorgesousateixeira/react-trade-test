@@ -3,7 +3,7 @@ import {ResultMessage} from "../models/resultMessage/resultMessage";
 import {User} from "../models/users/user";
 
 const getUserById = (Id: string) => {
-    return fetch(getApiBaseUrl() + '/Users/GetById/' + Id, {
+    return fetch(getApiBaseUrl() + '/Users/GetById?id=' + Id, {
         method: 'GET',
         headers: getDefaultHeaders()
     })
