@@ -5,13 +5,14 @@ import {ResultMessage} from "../models/resultMessage/resultMessage";
 
 const searchMessages = (criteria: SearchMessageCriteria) => {
     let queryString = '';
+    queryString += '?pageNumber=1';
     if (criteria.StartDate) {
-        queryString += '?StartDate=' + criteria.StartDate;
+        queryString += '&StartDate=' + criteria.StartDate;
     }
     if (criteria.Origin) {
         queryString += '&Origin=' + criteria.Origin;
     }
-    return fetch(getApiBaseUrl() + '/Messages/List' + queryString, {
+    return fetch(getApiBaseUrl() + '/Messages/PagedList' + queryString, {
         method: 'GET',
         headers: getDefaultHeaders()
     })

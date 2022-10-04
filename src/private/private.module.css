@@ -16,6 +16,7 @@
     --rgb-neutral-color: 158, 158, 158;
     --neutral-color: #9e9e9e;
     --rgb-dark-neutral-color: 51, 51, 51;
+    --text-in-reverse-color: white;
     --dark-neutral-color: #333;
     --rgb-dark-neutral-color: 51, 51, 51;
 
@@ -25,12 +26,15 @@
 
 .main {
     background-color: whitesmoke;
+    height: 100vh;
     font-family: var(--font-family-main);
     display: flex;
 }
 .navigation {
-    position: sticky;
+    position: fixed;
     top: 0;
+    background-color: #fff;
+    background-image: linear-gradient(43deg,#4158D0 0%,#C850C0 46%,#FFCC70 100%);
 }
 .content {
     flex-grow: 1;
