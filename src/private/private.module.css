@@ -2,6 +2,7 @@
 .main {
     --bg-color: #fff;
     --app-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --app-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --font-family-main: 'Jost', sans-serif;
     --font-family-alternative: 'JetBrains Mono', monospace;
     --text-primary: #424242;
@@ -19,9 +20,21 @@
     --text-in-reverse-color: white;
     --dark-neutral-color: #333;
     --rgb-dark-neutral-color: 51, 51, 51;
+    --bg-content: #fff;
 
     --search-card-grid-row-gap: 20px;
     --search-card-grid-column-gap: 5rem;
+
+    --search-border: #ececec;
+
+    /* border radius */
+    --border-radius-xs: 5px;
+    --border-radius-sm: 10px;
+    --border-radius-md: 15px;
+    --border-radius-lg: 20px;
+    --border-radius-xl: 25px;
+    --content-border-radius: 5px;
+    --nav-border-radius: 10px;
 }
 
 .main {

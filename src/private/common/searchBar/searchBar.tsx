@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button";
-import {TextField} from "@mui/material";
+import {Input, TextField} from "@mui/material";
 import {FC, useState} from "react";
 import styles from './searchBar.module.css'
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
@@ -21,12 +21,17 @@ const SearchBar: FC<SearchBarProps> = ({handleSearch, label, initialTerm}) => {
                     e.preventDefault();
                     handleSearch(searchTerm)
                 }}>
-                    <TextField id="searchTerm"
-                               label= {label ? label : t('searchBar.defaultSearchBarLabel')}
-                               variant="standard"
+                    <input className={styles.searchTerm}
+                        type="text"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+{/*                   <Input id="searchTerm"
+                               // label= {label ? label : t('searchBar.defaultSearchBarLabel')}
+                               // variant="standard"
                                value={searchTerm}
                                fullWidth
-                               onChange={(e) => setSearchTerm(e.target.value)}/>
+                               onChange={(e) => setSearchTerm(e.target.value)}/>*/}
                     <Button variant="contained" type={"submit"} endIcon={<ExpandMoreOutlinedIcon/>}>
                         Search
                     </Button>

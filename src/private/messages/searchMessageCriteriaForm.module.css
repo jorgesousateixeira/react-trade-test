@@ -1,5 +1,12 @@
 .formMessageCriteria {
- display: block;
+    display: flex;
+    align-items: center;
+    background: var(--bg-content);
+    padding: 0;
+    border-top: 1px solid var(--search-border);
+    box-shadow: var(--app-shadow-md);
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 2em;
 }
 .divMessageCriteria {
     display: grid;

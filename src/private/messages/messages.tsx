@@ -8,6 +8,7 @@ import {searchMessagesAsync} from "../../redux/messagesSlice";
 import SearchMessageCriteriaForm from "./searchMessageCriteriaForm";
 import PrivateContainer from "../common/privateContainer";
 import {t} from "i18next";
+import MessageSearchResultTable from "../common/searchResultTables/messageSearchResultTable";
 
 export function Messages () {
     const dispatch = useAppDispatch();
@@ -39,9 +40,7 @@ export function Messages () {
     return (
         <PrivateContainer title={t('messages.title')}>
             <SearchMessageCriteriaForm handleSearch={performSearch} />
-            {messages.map(function(message, index){
-                return <div key={ index }>{message.ID}-{message.CommAddress}</div>;
-            })}
+            <MessageSearchResultTable messages={messages} />
         </PrivateContainer>
 
     )

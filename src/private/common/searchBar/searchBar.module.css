@@ -1,3 +1,22 @@
 form {
     display: flex;
 }
+.searchBar {
+    padding: 0.65em 0.7em;
+    border: none;
+    font-size: 1.5rem;
+    outline: none;
+    border-top-left-radius: 5px;
+    border-top-left-radius: var(--border-radius-xs);
+    border-bottom-left-radius: 5px;
+    border-bottom-left-radius: var(--border-radius-xs);
+    border-top: 1px solid var(--search-border);
+    box-shadow: var(--app-shadow-md);
+    margin-bottom: 1em;
+    background-color: var(--bg-color);
+}
+.searchTerm {
+    border: none;
+    outline: none;
+    width: 100%;
+}
