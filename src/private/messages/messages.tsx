@@ -18,11 +18,11 @@ export function Messages () {
 
     dispatch(setActiveComponent(NavigationModulesEnum.Messages));
 
-    const performSearch = async (searchTerm: string) => {
-        console.log('Performing search: ' + searchTerm);
+    const performSearch = async (data: any) => {
+        console.log('Performing search: ' + JSON.stringify(data));
         const searchCriteria = {
             StartDate: '2022-02-21',
-            Origin: searchTerm
+            Origin: '',
         } as SearchMessageCriteria;
 
         const resultAction = await dispatch(searchMessagesAsync(searchCriteria));

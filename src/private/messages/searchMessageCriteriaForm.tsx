@@ -35,7 +35,7 @@ const SearchMessageCriteriaForm: FC<SearchMessageCriteriaFormProps> = ({handleSe
         formState: { errors }} = useForm<FormValues>({ defaultValues });
     const onSubmit: SubmitHandler<FormValues> = (data) => {
         console.log('Submit form with data: ' + JSON.stringify(data));
-        handleSearch();
+        handleSearch(data);
     };
     const [value, setValue] = useState<Date | null>(new Date());
     return (

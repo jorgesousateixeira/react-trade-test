@@ -22,7 +22,8 @@ const SearchBar: FC<SearchBarProps> = ({handleSearch, label, initialTerm}) => {
                     handleSearch(searchTerm)
                 }}>
                     <input className={styles.searchTerm}
-                        type="text"
+                           type="text"
+                           placeholder="type something"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
