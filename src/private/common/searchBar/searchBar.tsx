@@ -7,7 +7,7 @@ import {t} from "i18next";
 
 
 interface SearchBarProps {
-    handleSearch: (searchTerm: string) => void;
+    handleSearch: any;
     initialTerm?: string ;
     label?: string;
 }
@@ -21,9 +21,8 @@ const SearchBar: FC<SearchBarProps> = ({handleSearch, label, initialTerm}) => {
                     e.preventDefault();
                     handleSearch(searchTerm)
                 }}>
-                    <input className={styles.searchTerm}
-                           type="text"
-                           placeholder="type something"
+                    <input type="text"
+                           placeholder={ t(label || 'searchBar.defaultSearchBarLabel')}
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />

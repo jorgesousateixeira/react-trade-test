@@ -3,6 +3,7 @@
     --bg-color: #fff;
     --app-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     --app-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --app-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     --font-family-main: 'Jost', sans-serif;
     --font-family-alternative: 'JetBrains Mono', monospace;
     --text-primary: #424242;
@@ -36,7 +37,6 @@
     --content-border-radius: 5px;
     --nav-border-radius: 10px;
 }
-
 .main {
     background-color: whitesmoke;
     height: 100vh;

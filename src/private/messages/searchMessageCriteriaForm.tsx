@@ -5,6 +5,7 @@ import {DateTimePicker} from "@mui/lab";
 import SearchBar from "../common/searchBar/searchBar";
 import {t} from "i18next";
 import styles from './searchMessageCriteriaForm.module.css';
+import {StringUtils} from "../../utils/string-utils";
 
 type FormValues = {
     StartDate: Date;
@@ -23,10 +24,11 @@ const defaultValues = {
 
 const MessageTypes = ["HTTP","FILE","SFTP"];
 interface SearchMessageCriteriaFormProps {
-    handleSearch: any;
+    handleSearchByFullCriteria: any;
+    handleSearchByTerm: any;
 }
 
-const SearchMessageCriteriaForm: FC<SearchMessageCriteriaFormProps> = ({handleSearch}) => {
+const SearchMessageCriteriaForm: FC<SearchMessageCriteriaFormProps> = ({handleSearchByFullCriteria, handleSearchByTerm}) => {
     const {
         handleSubmit,
         register,
@@ -35,12 +37,13 @@ const SearchMessageCriteriaForm: FC<SearchMessageCriteriaFormProps> = ({handleSe
         formState: { errors }} = useForm<FormValues>({ defaultValues });
     const onSubmit: SubmitHandler<FormValues> = (data) => {
         console.log('Submit form with data: ' + JSON.stringify(data));
-        handleSearch(data);
+        handleSearchByFullCriteria(data);
     };
     const [value, setValue] = useState<Date | null>(new Date());
     return (
         <>
-            <SearchBar handleSearch={handleSearch} label={t('messages.searchForMessages')} />
+            <SearchBar handleSearch={handleSearchByTerm} label={t('messages.searchForMessages')}
+                       initialTerm={StringUtils.getCurrentDateTimeAsTradeStartId()} />
             <form className={styles.formMessageCriteria} onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.divMessageCriteria}>
                     {/*Start Date*/}

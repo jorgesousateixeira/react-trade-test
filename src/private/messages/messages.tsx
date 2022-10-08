@@ -36,10 +36,13 @@ export function Messages () {
             }
         }
     }
+    const performSearchByTerm = async (term: any) => {
+        console.log('Performing search by term');
+    }
 
     return (
         <PrivateContainer title={t('messages.title')}>
-            <SearchMessageCriteriaForm handleSearch={performSearch} />
+            <SearchMessageCriteriaForm handleSearchByFullCriteria={performSearch} handleSearchByTerm={performSearchByTerm} />
             <MessageSearchResultTable messages={messages} />
         </PrivateContainer>
 

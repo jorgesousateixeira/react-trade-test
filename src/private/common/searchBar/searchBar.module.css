@@ -14,9 +14,21 @@ form {
     box-shadow: var(--app-shadow-md);
     margin-bottom: 1em;
     background-color: var(--bg-color);
+    transition: all 0.3s ease-in-out;
 }
-.searchTerm {
+.searchBar:hover {
+    box-shadow: var(--app-shadow-xl);
+}
+
+.searchBar input {
     border: none;
     outline: none;
     width: 100%;
+    font-family: var(--font-family-main);
+    font-size: 1em;
+}
+.searchBar input::placeholder {
+    color: rgba(var(--rgb-dark-neutral-color), .3);
+    font-size: 1.2rem;
+    font-weight: 400;
 }
