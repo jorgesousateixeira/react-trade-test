@@ -40,12 +40,20 @@ const SearchMessageCriteriaForm: FC<SearchMessageCriteriaFormProps> = ({handleSe
         handleSearchByFullCriteria(data);
     };
     const [value, setValue] = useState<Date | null>(new Date());
+    const [isMoreOptionsOpen, setIsMoreOptionsOpen] = useState<boolean>(false);
+    const toggleAdvancedSearch = () => {
+        setIsMoreOptionsOpen(!isMoreOptionsOpen);
+        console.log('Toggle advanced search is open: ' + isMoreOptionsOpen);
+    }
     return (
         <>
-            <SearchBar handleSearch={handleSearchByTerm} label={t('messages.searchForMessages')}
+            <SearchBar handleSearch={handleSearchByTerm}
+                       handleToggle={toggleAdvancedSearch}
+                       label={t('messages.searchForMessages')}
+                       isMoreCriteriaOpen={isMoreOptionsOpen}
                        initialTerm={StringUtils.getCurrentDateTimeAsTradeStartId()} />
             <form className={styles.formMessageCriteria} onSubmit={handleSubmit(onSubmit)}>
-                <div className={styles.divMessageCriteria}>
+                <div className={isMoreOptionsOpen ? styles.divMessageCriteria : styles.closed  }>
                     {/*Start Date*/}
                     <div className={styles.startDate}>
                         <Controller
@@ -131,10 +139,11 @@ const SearchMessageCriteriaForm: FC<SearchMessageCriteriaFormProps> = ({handleSe
                             }
                         />
                     </div>
+                    {/* Submit */}
+                    <Button variant="contained" type={"submit"}>
+                        Submit
+                    </Button>
                 </div>
-                <Button variant="contained" type={"submit"}>
-                    Submit
-                </Button>
             </form>
         </>
     )

@@ -2,17 +2,19 @@ import Button from "@mui/material/Button";
 import {Input, TextField} from "@mui/material";
 import {FC, useState} from "react";
 import styles from './searchBar.module.css'
-import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
+import ArrowForwardIosOutlined from '@mui/icons-material/ArrowForwardIosOutlined';
 import {t} from "i18next";
 
 
 interface SearchBarProps {
     handleSearch: any;
-    initialTerm?: string ;
+    handleToggle: any;
+    initialTerm?: string;
     label?: string;
+    isMoreCriteriaOpen: boolean;
 }
 
-const SearchBar: FC<SearchBarProps> = ({handleSearch, label, initialTerm}) => {
+const SearchBar: FC<SearchBarProps> = ({handleSearch, label, initialTerm, handleToggle, isMoreCriteriaOpen}) => {
     const [searchTerm, setSearchTerm] = useState(initialTerm ? initialTerm : "");
     return (
         <>
@@ -23,18 +25,12 @@ const SearchBar: FC<SearchBarProps> = ({handleSearch, label, initialTerm}) => {
                 }}>
                     <input type="text"
                            placeholder={ t(label || 'searchBar.defaultSearchBarLabel')}
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-{/*                   <Input id="searchTerm"
-                               // label= {label ? label : t('searchBar.defaultSearchBarLabel')}
-                               // variant="standard"
-                               value={searchTerm}
-                               fullWidth
-                               onChange={(e) => setSearchTerm(e.target.value)}/>*/}
-                    <Button variant="contained" type={"submit"} endIcon={<ExpandMoreOutlinedIcon/>}>
-                        Search
-                    </Button>
+                           value={searchTerm}
+                           onChange={(e) => setSearchTerm(e.target.value)}/>
+                    <div onClick={handleToggle}
+                         className={ isMoreCriteriaOpen ? styles.iconToRotate
+                             : [styles.iconToRotate, styles.iconRotate].join(" ")}><ArrowForwardIosOutlined/></div>
+                    <Button variant="text" type={"submit"}>{t('searchBar.go')}</Button>
                 </form>
             </div>
         </>

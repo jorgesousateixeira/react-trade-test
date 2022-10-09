@@ -38,6 +38,7 @@ export function Messages () {
     }
     const performSearchByTerm = async (term: any) => {
         console.log('Performing search by term');
+        return false;
     }
 
     return (

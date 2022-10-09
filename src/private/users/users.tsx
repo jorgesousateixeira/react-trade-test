@@ -30,7 +30,7 @@ export function Users () {
 
     return (
         <PrivateContainer title={t('users.title')}>
-            <SearchBar handleSearch={performSearch} />
+            <SearchBar handleSearch={performSearch} isMoreCriteriaOpen={false} handleToggle={()=>{console.log('handle toggle in users....')}}/>
             <UserList users= {users ? users : []} />
         </PrivateContainer>
     )
