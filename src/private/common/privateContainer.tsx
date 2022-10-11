@@ -8,7 +8,7 @@ interface PrivateContainerProps {
 
 const PrivateContainer:FC<PrivateContainerProps>  = ( {title,children} ) => {
     return (
-       <div className={styles.privateContainer}>
+       <div className={[styles.privateContainer, styles.animatedFadein].join(" ")}>
            <PageTitle title={title} />
            {children}
        </div>

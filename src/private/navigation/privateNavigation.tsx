@@ -1,4 +1,6 @@
 import styles from './privateNavigation.module.css'
+import styles2 from '../common/privateContainer.module.css'
+
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {getTokenAsync} from "../../redux/loginSlice";
@@ -25,7 +27,7 @@ export default function PrivateNavigation() {
     }*/
 
     return (
-        <div className={styles.navContainer}>
+        <div className={[styles.navContainer, styles2.animatedFadein].join((" "))}>
             <div className={styles.appName}>Trade</div>
             <nav className={styles.nav}>
                 <Link to="/private/home">
