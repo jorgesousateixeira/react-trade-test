@@ -4,6 +4,7 @@ import styles from "./messageSearchResultTable.module.css";
 import styles2 from '../privateContainer.module.css'
 import moment from "moment";
 import TradeDateDisplay from "../tradeDateDisplay";
+import {Link} from "react-router-dom";
 
 
 interface MessageSearchResultProps {
@@ -26,7 +27,11 @@ const MessageSearchResultTable: FC<MessageSearchResultProps> = ({messages}) => {
                     <tbody>
                     {messages?.map(function (message, index) {
                         return <tr key={index}>
-                            <td className={styles.tdID}>{message.ID}</td>
+                            <td className={styles.tdID}>
+                                <Link to={{pathname: `/private/message/${message.ID}`}}>
+                                    {message.ID}
+                                </Link>
+                                </td>
                             <td className={styles.tdCreationDate}><TradeDateDisplay date={message.CreationDate}/></td>
                             <td>{message.Status}</td>
                             <td>{message.Origin}</td>

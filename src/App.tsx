@@ -13,6 +13,7 @@ import {Partners} from "./private/partners/partners";
 import {PrivateContainer} from "./private/private";
 import Users from "./private/users/users";
 import UserDetails from "./private/users/userDetailsViaStore";
+import MessageDetails from "./private/message-details/messageDetails";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path="/private" element={<PrivateContainer />}>
                   <Route path='/private/home' element={<PrivateHome/>}/>
                   <Route path='/private/messages' element={<Messages/>}/>
+                  <Route path='/private/message/:id' element={<MessageDetails />}/>
                   <Route path='/private/documents' element={<Documents/>}/>
                   <Route path='/private/partners' element={<Partners/>}/>
                   <Route path='/private/users' element={<Users />}/>
