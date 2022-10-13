@@ -4,25 +4,34 @@ import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 
 import {TradeMessage} from "../../models/messages/message";
+import {getUserByIdAsync} from "../../redux/usersSlice";
+import {toast} from "react-toastify";
+import {getMessageByIdAsync} from "../../redux/messagesSlice";
+import MessageHierarchy from "../common/messageHierarchy/messageHierarchy";
 
 const MessageDetails = () => {
     let {id} = useParams();
     const dispatch = useAppDispatch();
-    const [message, setMessage] = useState<TradeMessage|undefined>(undefined);
+    const [message, setMessage] = useState<TradeMessage|null>(null);
 
     useEffect(() => {
         if (id) {
-            getMessageById(id);
+            getMessageById(id).then();
         }
     },[id]);
 
-    function getMessageById(id: string) {
-        setMessage({ ID: id } as TradeMessage);
+    async function getMessageById(id: string) {
+        const resultAction = await dispatch(getMessageByIdAsync(id));
+        if (getMessageByIdAsync.fulfilled.match(resultAction)) {
+            setMessage(resultAction.payload ? resultAction.payload.ResultData : null);
+        }
     }
+
 
     return (
         <PrivateContainer title="Message details....">
-            <h1>{message?.ID}</h1>
+            <MessageHierarchy message={message} currentId={message?.ID} />
+            <p>{JSON.stringify(message)}</p>
         </PrivateContainer>
     );
 };

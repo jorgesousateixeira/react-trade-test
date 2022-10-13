@@ -1,4 +1,5 @@
 import {MessageContents} from "./messageContents";
+import {TradeDocument} from "../documents/document";
 
 export interface TradeMessage {
     Ack: false;
@@ -31,7 +32,7 @@ export interface TradeMessage {
     Destination: string;
     DestinationName: string;
     Direction: string; // TODO: Enum
-    Documents: [];
+    Documents: TradeDocument[];
     Encrypted: boolean;
     FilterId: string;
     FolderSize: number;
@@ -39,7 +40,7 @@ export interface TradeMessage {
     ID: string;
     LastChangeDate: string; // TODO: Date
     LastStatus: string; // TODO: Enum
-    Messages: [];
+    Messages: TradeMessage[];
     MsgFilterId: string;
     NParts: number;
     Origin: string;
@@ -69,4 +70,4 @@ export interface TradeMessage {
     TmrTotal: number;
     Type: string; // TODO: ENUM
     WorkflowOrder: number;
-};
+}

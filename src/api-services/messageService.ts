@@ -20,6 +20,26 @@ const searchMessages = (criteria: SearchMessageCriteria) => {
         .catch(handleError)
 };
 
+const getMessageById = (id: string) => {
+    return fetch(getApiBaseUrl() + '/Messages/GetById/' + id, {
+        method: 'GET',
+        headers: getDefaultHeaders()
+    })
+        .then(response => response.ok ? (response.json().then(result => result as ResultMessage<TradeMessage>)) : null)
+        .catch(handleError)
+};
+const getMessageProcessing = (id: string) => {
+    return fetch(getApiBaseUrl() + '/Messages/GetProcessing/' + id, {
+        method: 'GET',
+        headers: getDefaultHeaders()
+    })
+        .then(response => response.ok ? (response.json().then(result => result as ResultMessage<TradeMessage>)) : null)
+        .catch(handleError)
+};
+
+
 export default {
-    searchMessages
+    searchMessages,
+    getMessageById,
+    getMessageProcessing
 };

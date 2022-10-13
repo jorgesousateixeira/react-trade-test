@@ -2,7 +2,6 @@ import {FC} from "react";
 import {TradeMessage} from "../../../models/messages/message";
 import styles from "./messageSearchResultTable.module.css";
 import styles2 from '../privateContainer.module.css'
-import moment from "moment";
 import TradeDateDisplay from "../tradeDateDisplay";
 import {Link} from "react-router-dom";
 

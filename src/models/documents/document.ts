@@ -1,0 +1,55 @@
+import { MetaInfo } from "../common/metaInfo";
+import { Transformation } from "../common/transformation";
+import { TradeMessage } from "../messages/message";
+
+export interface TradeDocument {
+	ActionResult: string;
+	BusinessType: string;
+	Cause: string;
+	CertificateIssuer: string;
+	CertificateSerial: string;
+	CertificateSubject: string;
+	Comments: string;
+	CompressedInfo: boolean;
+	CreationDate: string;
+	DefinitionGroupId: string;
+	Destination: string;
+	DestinationName: string;
+	Direction: string;
+	DocProcessingInInfoMessage: boolean;
+	Documents: TradeDocument[];
+	FilterId: string;
+	FlatFileTag: string;
+	HousekeepingPath: string;
+	ID: string;
+	InfoMessageTransformation: string;
+	IsOriginSignature: boolean;
+	LastStatus: string;
+	MessageId: string;
+	Messages: TradeMessage[];
+	MetaInfo: MetaInfo[];
+	MetaInfoValue: string;
+	MetaInfoValue2: string;
+	Origin: string;
+	OriginName: string;
+	PathInfoMessage: string;
+	PathOriginal: string;
+	PathToContext: string;
+	PathToTranslate: string;
+	Pooling: string;
+	PreDocFilterId: string;
+	ProcessingStatus: string;
+	QueueCreationDate: string;
+	SignatureAlg: string;
+	SignatureDigestAlg: string;
+	SignatureProvider: string;
+	Signed: boolean;
+	Status: string;
+	TaskId: string;
+	TmrInfoMsgProcessing: number;
+	TmrTotal: number;
+	Transformations: Transformation[];
+	Type: string;
+	WorkflowFile: string;
+	WorkflowGroupId: string
+}
