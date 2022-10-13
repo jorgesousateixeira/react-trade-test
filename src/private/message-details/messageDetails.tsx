@@ -31,7 +31,6 @@ const MessageDetails = () => {
     return (
         <PrivateContainer title="Message details....">
             <MessageHierarchy message={message} currentId={message?.ID} />
-            <p>{JSON.stringify(message)}</p>
         </PrivateContainer>
     );
 };

@@ -1,6 +1,7 @@
 import {FC} from "react";
 import {TradeDocument} from "../../../models/documents/document";
 import MessageHierarchy from "./messageHierarchy";
+import styles from './hierarchy.module.css'
 
 interface DocumentHierarchyProps {
     document: TradeDocument;
@@ -10,7 +11,7 @@ interface DocumentHierarchyProps {
 const DocumentHierarchy: FC<DocumentHierarchyProps> = ({ document }) => {
     return (
         <div>
-            <div>
+            <div className={styles.document}>
                 <div>D {document?.ID}</div>
                 {
                     document?.Documents?.map(function (document, index) {
@@ -22,8 +23,8 @@ const DocumentHierarchy: FC<DocumentHierarchyProps> = ({ document }) => {
                     })
                 }
             </div>
-            {/* Documents */}
-            <div>
+            {/* Messages */}
+            <div className={styles.message}>
                 {
                     document?.Messages?.map(function (message, index) {
                         return (

@@ -1,6 +1,8 @@
 import {FC} from "react";
 import {TradeMessage} from "../../../models/messages/message";
 import DocumentHierarchy from "./documentHierarchy";
+import {inspect} from "util";
+import styles from './hierarchy.module.css'
 
 interface MessageHierarchyProps {
     message: TradeMessage | null;
@@ -10,7 +12,7 @@ interface MessageHierarchyProps {
 const MessageHierarchy: FC<MessageHierarchyProps> = ({ message }) => {
     return (
         <div>
-            <div>
+            <div className={styles.message}>
                 <div>M {message?.ID}</div>
                 {
                     message?.Documents?.map(function (document, index) {
@@ -23,7 +25,7 @@ const MessageHierarchy: FC<MessageHierarchyProps> = ({ message }) => {
                 }
             </div>
             {/* Documents */}
-            <div>
+            <div className={styles.document}>
                 {
                     message?.Messages?.map(function (message, index) {
                         return (
