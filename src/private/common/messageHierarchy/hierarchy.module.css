@@ -1,9 +1,10 @@
 .message {
-    background-color: lightsalmon;
+    background-color: lightblue;
     margin-left: 2em;
     text-align: left;
 }
 .document {
-    background-color: lightblue;
+    background-color: lightsalmon;
     margin-left: 2em;
+    text-align: left;
 }

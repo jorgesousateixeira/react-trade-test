@@ -13,22 +13,20 @@ const DocumentHierarchy: FC<DocumentHierarchyProps> = ({ document }) => {
     return (
         <div>
             <div className={styles.document}>
-                <div>{document && (document?.Documents?.length >0 || document?.Messages?.length > 0) && <ArrowForwardIosOutlined/>} D {document?.ID}</div>
+                <div>{
+                    (document && (document?.Documents?.length >0 || document?.Messages?.length > 0))
+                    ? <ArrowForwardIosOutlined/> : '..'
+                } D {document?.ID}</div>
+                {/* ...Messages */}
+                    {
+                        document?.Messages?.map(function (message, index) {
+                            return (<MessageHierarchy message={message} currentId={message.ID} />);
+                        })
+                    }
+                {/* ...Documents */}
                 {
                     document?.Documents?.map(function (document, index) {
-                        return (
-                                <DocumentHierarchy document={document} currentId={document.ID} />
-                        );
-                    })
-                }
-            </div>
-            {/* Messages */}
-            <div className={styles.message}>
-                {
-                    document?.Messages?.map(function (message, index) {
-                        return (
-                                <MessageHierarchy message={message} currentId={message.ID} />
-                        );
+                        return (<DocumentHierarchy document={document} currentId={document.ID} />);
                     })
                 }
             </div>
