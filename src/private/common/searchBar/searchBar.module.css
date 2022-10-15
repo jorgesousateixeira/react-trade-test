@@ -33,6 +33,7 @@ form {
     font-weight: 400;
 }
 .iconToRotate {
+    color: var(--color-primary);
     padding: 0 1em 0 1em;
     background: transparent;
     cursor: pointer;
