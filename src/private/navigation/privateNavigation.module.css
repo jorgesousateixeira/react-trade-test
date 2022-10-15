@@ -7,6 +7,7 @@
     height: 100vh;
     width: 110px;
 }
+
 .navContainer .nav a {
     text-transform: uppercase;
     text-decoration: none;
@@ -17,7 +18,8 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--text-in-reverse-color);
-    border: 2px solid transparent;
+    /* border: 2px solid transparent; */
+    border-top: 1px solid rgb(255 255 255 / 7%);
     transition: all 400ms linear;
 }
 .navContainer .nav a:visited {
@@ -27,20 +29,23 @@
     background: rgba(0,0,0,.08);
     box-shadow: inset 5px 0 0 0 var(--main-color);
 }
-.navContainer .nav a span.active::after {
+
+.navContainer span.activexxx {
+    border-bottom: 1px solid var(--text-in-reverse-color);
+}
+
+.navContainer span.active::after {
     content: "";
     display: inline-block;
     width: 7px;
     height: 7px;
     border-radius: 100%;
     background-color: var(--main-color);
-    top: 72%;
+    margin-top: 24px;
     position: absolute;
     left: 45%;
 }
-.navContainer span.active {
-    border-bottom: 3px solid var(--text-in-reverse-color);
-}
+
 .navContainer .appName{
     margin-top: 1em;
     color: var(--text-primary);
