@@ -12,7 +12,7 @@ import MessageHierarchy from "../common/messageHierarchy/messageHierarchy";
 const MessageDetails = () => {
     let {id} = useParams();
     const dispatch = useAppDispatch();
-    const [message, setMessage] = useState<TradeMessage|null>(null);
+    const [message, setMessage] = useState<TradeMessage>({} as TradeMessage);
 
     useEffect(() => {
         if (id) {
@@ -23,7 +23,7 @@ const MessageDetails = () => {
     async function getMessageById(id: string) {
         const resultAction = await dispatch(getMessageByIdAsync(id));
         if (getMessageByIdAsync.fulfilled.match(resultAction)) {
-            setMessage(resultAction.payload ? resultAction.payload.ResultData : null);
+            setMessage(resultAction.payload ? resultAction.payload.ResultData : {} as TradeMessage);
         }
     }
 
