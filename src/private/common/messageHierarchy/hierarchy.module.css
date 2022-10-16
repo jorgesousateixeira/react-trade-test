@@ -13,3 +13,18 @@
 .hideChildren {
     display: none;
 }
+.infoAndToggle {display: flex}
+
+.iconToRotate {
+    color: var(--color-primary);
+    padding: 0 1em 0 1em;
+    background: transparent;
+    cursor: pointer;
+    border-left: 1px solid #ececec;
+    transform: rotate(90deg);
+    transition: transform 0.5s ease;
+}
+.iconRotate {
+    transform: rotate(0deg);
+}
+

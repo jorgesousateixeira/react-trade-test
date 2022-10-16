@@ -23,10 +23,11 @@ const MessageHierarchy: FC<MessageHierarchyProps> = ({ message }) => {
 
     return (
             <div className={styles.message}>
-                <div onClick={toggleChildren}>{
-                    hasChildren
-                    ?  <ArrowForwardIosOutlined/> : '..'
-                } M {message?.ID}
+                <div className={styles.infoAndToggle}>
+                    { hasChildren ? <div onClick={toggleChildren}
+                                          className={ !hideChildren ? styles.iconToRotate : [styles.iconToRotate, styles.iconRotate].join(" ")}>
+                        <ArrowForwardIosOutlined/></div>
+                        : <div>X</div>} M {message?.ID}
                 </div>
                 <div id={'children-of-' + message.ID}
                      className={hideChildren ? [styles.children, styles.hideChildren].join(" ") : styles.children}>

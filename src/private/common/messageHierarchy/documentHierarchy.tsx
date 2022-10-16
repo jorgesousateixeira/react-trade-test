@@ -20,10 +20,12 @@ const DocumentHierarchy: FC<DocumentHierarchyProps> = ({ document }) => {
     }
     return (
             <div className={styles.document}>
-                <div onClick={toggleChildren}>{
-                    hasChildren
-                    ? <ArrowForwardIosOutlined/> : '..'
-                } D {document?.ID}</div>
+                <div className={styles.infoAndToggle}>
+                    { hasChildren ? <div onClick={toggleChildren}
+                                         className={ !hideChildren ? styles.iconToRotate : [styles.iconToRotate, styles.iconRotate].join(" ")}>
+                            <ArrowForwardIosOutlined/></div>
+                        : <div>X</div>} D {document?.ID}
+                </div>
                 <div className={hideChildren ? [styles.children, styles.hideChildren].join(" ") : styles.children}>
                     {/* ...Messages */}
                     {
