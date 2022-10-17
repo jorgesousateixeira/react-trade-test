@@ -5,7 +5,7 @@ import { getAppTheme } from "./../api-services/apiUtils";
 
 export function PrivateContainer () {
     return (
-        <div id="main" className={[styles.main, styles[getAppTheme()]].join(" ")}>
+        <div id="main" className={[styles.main, styles[getAppTheme().toLocaleLowerCase()]].join(" ")}>
             <div className={styles.navigation}>
                 <PrivateNavigation/>
             </div>

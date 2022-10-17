@@ -12,6 +12,7 @@ import { Divider, ListItemIcon, ListItemText } from '@mui/material';
 import { Logout, Person, Settings, ColorLens, Language } from '@mui/icons-material';
 import { LanguagesEnum } from '../../models/clientOnly/languages.enum';
 import i18n from '../../i18n';
+import { getAppTheme } from '../../api-services/apiUtils';
 
 interface Props {
     user: User | undefined;
@@ -45,7 +46,7 @@ const PositionedMenu: FC<Props> = ({user}) => {
     };
     const handleCloseTheme = (event: any, value: string) => {
         handleCloseAll();
-        localStorage.setItem(localStorageKeys.APP_THEME, value.toLocaleLowerCase());
+        localStorage.setItem(localStorageKeys.APP_THEME, value);
     };
     const handleCloseLang = (event: any, value: string) => {
         handleCloseAll();
@@ -100,7 +101,7 @@ const PositionedMenu: FC<Props> = ({user}) => {
                     <ListItemIcon>
                         <Language fontSize="small" />
                     </ListItemIcon>
-                    <ListItemText>Language ({i18n.resolvedLanguage.toLocaleUpperCase()})</ListItemText>
+                    <ListItemText>Language</ListItemText>
                 </MenuItem>
                 <Divider />
                 <MenuItem onClick={(event) => handleClose(event, 3)}>
@@ -118,9 +119,9 @@ const PositionedMenu: FC<Props> = ({user}) => {
                 onClose={ handleClose2Theme }
                 anchorOrigin={{ vertical: 'top', horizontal: 'right',}}
                 transformOrigin={{ vertical: 'top', horizontal: 'right',}}>
-                <MenuItem onClick={(event) => handleCloseTheme(event, ThemeEnum.DEFAULT)}>Default</MenuItem>
-                <MenuItem onClick={(event) => handleCloseTheme(event, ThemeEnum.ALTERNATIVE)}>Alternative</MenuItem>
-                <MenuItem onClick={(event) => handleCloseTheme(event, ThemeEnum.SOFT)}>Soft</MenuItem>
+                {Object.values(ThemeEnum).map((thm) => (
+                    <MenuItem onClick={(event) => handleCloseTheme(event, thm)} style={{fontWeight: getAppTheme() === thm ? 'bold' : 'normal'}}>{thm}</MenuItem>
+                ))}
             </Menu>
             <Menu
                 id="lang-menu"
@@ -130,8 +131,9 @@ const PositionedMenu: FC<Props> = ({user}) => {
                 onClose={ handleClose2Lang }
                 anchorOrigin={{ vertical: 'top', horizontal: 'right',}}
                 transformOrigin={{ vertical: 'top', horizontal: 'right',}}>
-                <MenuItem onClick={(event) => handleCloseLang(event, LanguagesEnum.EN)}>English</MenuItem>
-                <MenuItem onClick={(event) => handleCloseLang(event, LanguagesEnum.PT)}>Português</MenuItem>
+                {Object.values(LanguagesEnum).map((lng) => (
+                    <MenuItem onClick={(event) => handleCloseLang(event, lng)} style={{fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal'}}>{lng.toLocaleUpperCase()}</MenuItem>
+                ))}
             </Menu>
         </div>
     );
