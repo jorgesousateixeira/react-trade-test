@@ -4,15 +4,17 @@ import PrivateContainer from "../common/privateContainer";
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {searchMessagesAsync} from "../../redux/messagesSlice";
-import {getLoggedUserByIdAsync, getTokenAsync} from "../../redux/loginSlice";
+import {getLoggedUserByIdAsync, getTokenAsync, setActiveComponent} from "../../redux/loginSlice";
 import {toast} from "react-toastify";
 import {getUserByIdAsync} from "../../redux/usersSlice";
 import {SearchMessageCriteria} from "../../models/messages/searchMessageCriteria";
 import UserDetailsPresenter from "./userDetailsPresenter";
+import { NavigationModulesEnum } from "../../models/clientOnly/navigationModulesEnum";
 
 const UserDetailsViaUseEffect = () => {
     let {id} = useParams();
     const dispatch = useAppDispatch();
+    dispatch(setActiveComponent(NavigationModulesEnum.Users));
     const [user, setUser] = useState<User|undefined>(undefined);
     console.log('Rendering UserDetails via useEffect...');
 

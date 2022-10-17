@@ -26,6 +26,8 @@ export default function PrivateNavigation() {
         loggedUser = JSON.parse(loggedUserStr);
     }*/
 
+    console.log(activeComponent);
+
     return (
         <div className={[styles.navContainer, styles2.animatedFadein].join((" "))}>
             <div className={styles.appName}>Trade</div>
@@ -45,7 +47,7 @@ export default function PrivateNavigation() {
                 <Link to="/private/settings" className={activeComponent === NavigationModulesEnum.Settings ? styles.active : ''}>
                     <span>Settings</span>
                 </Link>
-                <Link to="/private/admin" className={activeComponent === NavigationModulesEnum.Admin ? styles.active : ''}>
+                <Link to="/private/admin" className={activeComponent === NavigationModulesEnum.Admin || activeComponent === NavigationModulesEnum.Users ? styles.active : ''}>
                     <span>Admin</span>
                 </Link>
             </nav>

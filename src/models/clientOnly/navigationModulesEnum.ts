@@ -4,5 +4,6 @@ export enum NavigationModulesEnum {
     Documents = "Documents",
     Partners = "Partners",
     Settings = "Settings",
-    Admin = "Admin"
+    Admin = "Admin",
+    Users = "Users"
 }
