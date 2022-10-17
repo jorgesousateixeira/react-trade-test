@@ -1,13 +1,9 @@
-.privateContainer {
-    margin: 0 3em 0 200px;
-}
 .userName {
     color: var(--text-in-reverse-color);
     font-size: .6em;
 }
 
 .animatedFadein {
-    margin-top: 25px;
     font-size: 21px;
     text-align: center;
     animation: fadein .8s;

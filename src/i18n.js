@@ -40,9 +40,9 @@ i18n
         backend: backendOptions,
         fallbackLng: 'en',
         load: 'languageOnly',
-        ns: ['Trade-Client'],
         defaultNS: 'Trade-Client',
         fallbackNS: 'Trade-Client',
+        ns: ['Trade-Client'],
         debug: true,
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default

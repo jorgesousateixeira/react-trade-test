@@ -30,28 +30,28 @@ export default function PrivateNavigation() {
         <div className={[styles.navContainer, styles2.animatedFadein].join((" "))}>
             <div className={styles.appName}>Trade</div>
             <nav className={styles.nav}>
-                <Link to="/private/home">
-                    <span className={activeComponent === NavigationModulesEnum.PrivateHome ? styles.active : ''}>Home</span>
+                <Link to="/private/home" className={activeComponent === NavigationModulesEnum.PrivateHome ? styles.active : ''}>
+                    <span>Home</span>
                 </Link>
-                <Link to="/private/messages">
-                    <span className={activeComponent === NavigationModulesEnum.Messages ? styles.active : ''}>Messages</span>
+                <Link to="/private/messages" className={activeComponent === NavigationModulesEnum.Messages ? styles.active : ''}>
+                    <span>Messages</span>
                 </Link>
-                <Link to="/private/documents">
-                    <span className={activeComponent === NavigationModulesEnum.Documents ? styles.active : ''}>Documents</span>
+                <Link to="/private/documents" className={activeComponent === NavigationModulesEnum.Documents ? styles.active : ''}>
+                    <span>Documents</span>
                 </Link>
-                <Link to="/private/partners">
-                    <span className={activeComponent === NavigationModulesEnum.Partners ? styles.active : ''}>Partners</span>
+                <Link to="/private/partners" className={activeComponent === NavigationModulesEnum.Partners ? styles.active : ''}>
+                    <span>Partners</span>
                 </Link>
-                <Link to="/private/settings">
-                    <span className={activeComponent === NavigationModulesEnum.Settings ? styles.active : ''}>Settings</span>
+                <Link to="/private/settings" className={activeComponent === NavigationModulesEnum.Settings ? styles.active : ''}>
+                    <span>Settings</span>
                 </Link>
-                <Link to="/private/admin">
-                    <span className={activeComponent === NavigationModulesEnum.Admin ? styles.active : ''}>Admin</span>
+                <Link to="/private/admin" className={activeComponent === NavigationModulesEnum.Admin ? styles.active : ''}>
+                    <span>Admin</span>
                 </Link>
             </nav>
             <div className={styles.userAndSignature}>
                 <div className={styles.userArea}>
-                <PositionedMenu user={loggedUser} />
+                    <PositionedMenu user={loggedUser} />
                 </div>
                 <div className={styles.signature}>
                     <a>www.saphety.com</a>

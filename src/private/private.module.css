@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Jost:wght@200;300;400;500;600;700;800;900&display=swap');
+
 .main {
     --bg-color: #fff;
     --app-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -9,11 +10,21 @@
     --text-primary: #424242;
     --text-alternative: #909090;
 
+    --side-bar-color-1: #FFCC70;
+    --side-bar-color-2: #ff954a;
+    --side-bar-color-3: #fe6601;
+
     /* main color */
-    --rgb-main-color: 0, 154, 250;
-    --main-color: #009afa;
-    --main-color-hover: #1976d2;
-    --color-primary: #005fea;
+    --rgb-main-color: 254, 102, 1;
+    --main-color: #fe6601;
+    --main-color-hover: #ff8826;
+    --color-primary: #fe6601;
+
+    /* secondary color */
+    --rgb-secondary-color: 123, 118, 146;
+    --secondary-color: #7b7692;
+    --secondary-color-hover: #4a4463;
+    --color-secondary: #7b7692;
 
     --rgb-neutral-color: 158, 158, 158;
     --neutral-color: #9e9e9e;
@@ -41,16 +52,28 @@
     background-color: whitesmoke;
     height: 100vh;
     font-family: var(--font-family-main);
-    display: flex;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    grid-template-areas: "sidebar main-content";
+    z-index: 0;
 }
+
 .navigation {
+    grid-area: sidebar;
     position: fixed;
     top: 0;
     background-color: #fff;
-    background-image: linear-gradient(43deg,#4158D0 0%,#C850C0 46%,#FFCC70 100%);
+    /*background-image: linear-gradient(43deg,#4158D0 0%,#C850C0 46%,#FFCC70 100%);*/
+    background-image: linear-gradient(45deg, var(--side-bar-color-3) 0%, var(--side-bar-color-3) 50%, var(--side-bar-color-1) 100%);
+    width: 110px;
+    z-index: 2;
+    height: 100vh;
 }
+
 .content {
-    flex-grow: 1;
-    width: 100%;
+    grid-area: main-content;
+    z-index: 1;
+    position: relative;
+    padding: 1em 2em;
 }
 
