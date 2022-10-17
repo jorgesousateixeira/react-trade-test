@@ -5,6 +5,9 @@ import MenuItem from '@mui/material/MenuItem';
 import {FC, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {User} from "../../models/users/user";
+import styles from './privateContainer.module.css';
+
+
 
 interface Props {
     user: User | undefined;
@@ -35,6 +38,7 @@ const PositionedMenu: FC<Props> = ({user}) => {
     return (
         <div>
             <Button
+                className={styles.userName}
                 id="demo-positioned-button"
                 aria-controls={open ? 'demo-positioned-menu' : undefined}
                 aria-haspopup="true"

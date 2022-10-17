@@ -1,9 +1,37 @@
 .message {
-    background-color: lightsalmon;
+    background-color: lightblue;
     margin-left: 2em;
     text-align: left;
 }
 .document {
-    background-color: lightblue;
+    background-color: lightsalmon;
     margin-left: 2em;
+    text-align: left;
 }
+.children {
+    opacity: 1;
+    height: auto;
+}
+.hideChildren {
+    opacity: 0;
+    overflow: hidden;
+    height: 0;
+    transition: height .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+    /* display: none; */
+}
+.infoAndToggle {display: flex}
+
+.iconToRotate {
+    color: var(--color-primary);
+    padding: 0 1em 0 1em;
+    background: transparent;
+    cursor: pointer;
+    border-left: 1px solid #ececec;
+    transform: rotate(90deg);
+    transition: transform 0.5s ease;
+}
+.iconRotate {
+    transform: rotate(0deg);
+}
+

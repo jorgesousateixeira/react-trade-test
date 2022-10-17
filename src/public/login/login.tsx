@@ -6,6 +6,8 @@ import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {getLoggedUserByIdAsync, getTokenAsync, getTokenSuccess} from "../../redux/loginSlice";
 import {toast} from "react-toastify";
 import {useTranslation} from "react-i18next";
+import { useSpring, animated } from 'react-spring'
+import {Fade} from "../../animations/fade";
 
 export function Login () {
     const dispatch = useAppDispatch();
@@ -21,6 +23,11 @@ export function Login () {
         en: { nativeName: 'English' },
         pt: { nativeName: 'Portuguese' }
     };
+
+    const stylesSpring = useSpring({
+        from: { opacity: "0" },
+        to: { opacity: "1" },
+    });
 
     async function handleLogin(e: any) {
         console.log('handling login....');
@@ -55,7 +62,9 @@ export function Login () {
                     ))}
                 </div>
             </div>
-            <div className={styles.loginContainer}>
+            {/* animation test */}
+            <Fade>
+                <div className={styles.loginContainer}>
                 <div className={styles.loginFormTitle}>
                     <span className={styles.appName}>Trade</span>
                     <span className={styles.appName2}>Admin</span>
@@ -84,6 +93,8 @@ export function Login () {
                         </Button>
                     </form>
                 </Box></div>
+            </Fade>
+
         </>
     );
 }

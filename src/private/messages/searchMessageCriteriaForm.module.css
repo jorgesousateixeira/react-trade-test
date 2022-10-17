@@ -19,16 +19,16 @@
     "stDate stDate enDate enDate"
     "origin origin destin destin"
     "type type . .";
-    opacity: 1;
     max-height: 15em;
+    overflow: hidden;
     transition: max-height .3s ease-in-out;
 }
 .closed {
     max-height: 0;
-    opacity: 0;
-    display: none;
+    overflow: hidden;
     transition: max-height .3s ease-in-out;
 }
+
 
 
 .divMessageCriteria .startDate { grid-area: stDate; }
