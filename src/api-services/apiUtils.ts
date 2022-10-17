@@ -8,7 +8,7 @@ export function handleError(error: any) {
 }
 
 export const getApiBaseUrl = () => 'https://saphetydoc-int.saphety.com/TradeBusinessWs';
-export const getGlobalizationBaseUrl = () => 'https://doc-server-int.saphety.com/Doc.Globalization.WebApi/api';
+export const getGlobalizationBaseUrl = () => 'https://doc-server-int.saphety.com/IN2.Globalization.WebApi/api';
 export const getLoggedUserToken = () => localStorage.getItem(localStorageKeys.APP_LOGGED_USER_TOKEN);
 export const getDefaultHeaders = () => { return { "content-type": "application/json", "Authorization": "Bearer " + getLoggedUserToken() }; }
 

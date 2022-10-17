@@ -12,8 +12,6 @@ import {LocalizationProvider} from "@mui/lab";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import './i18n';
 
-
-
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>

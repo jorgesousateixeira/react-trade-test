@@ -1,8 +1,34 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import I18NextHttpBackend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import { loadLanguageGlobalizations } from './app/globalization';
+import GlobalizationService from "./api-services/globalizationService";
+import {getGlobalizationBaseUrl} from "./api-services/apiUtils";
+
+const backendOptions = {
+    allowMultiLoading: false,
+    loadPath: getGlobalizationBaseUrl() + '/Resource/{{ns}}?lng={{lng}}',
+    request: async (options, url, payload, callback) => {
+        try {
+            const lng = url.split("lng=")[1];
+            let resources = await GlobalizationService.getGlobalizationResourcesByURL(url);
+            resources = loadLanguageGlobalizations(resources?.Data, lng);
+            callback(null, {
+                data: resources,
+                status: 200,
+            });
+        } catch (e) {
+            console.error(e);
+            callback(null, {
+                status: 500,
+            });
+        }
+    },
+};
 
 i18n
+    .use(I18NextHttpBackend)
     // detect user language
     // learn more: https://github.com/i18next/i18next-browser-languageDetector
     .use(LanguageDetector)
@@ -11,62 +37,19 @@ i18n
     // init i18next
     // for all options read: https://www.i18next.com/overview/configuration-options
     .init({
-        debug: true,
+        backend: backendOptions,
         fallbackLng: 'en',
+        load: 'languageOnly',
+        ns: ['Trade-Client'],
+        defaultNS: 'Trade-Client',
+        fallbackNS: 'Trade-Client',
+        debug: true,
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
         },
-        resources: {
-            en: {
-                translation: {
-                    appName : 'Trade admin',
-                    users: {
-                        title: 'Users'
-                    },
-                    messages: {
-                        title: 'Messages'
-                    },
-                    loginPage: {
-                        enterCredentials: 'Enter credentials...',
-                        userName: 'User name',
-                        password: 'Password',
-                        btnLogin: 'Login',
-                        backToPublicHome: 'Public home'
-                    },
-                    searchBar: {
-                        defaultSearchBarLabel: "Search..."
-                    },
-                    description: {
-                        part1: 'Edit <1>src/App.js</1> and save to reload.',
-                        part2: 'Learn React'
-                    }
-                }
-            },
-            pt: {
-                translation: {
-                    appName : 'Trade admin',
-                    users: {
-                        title: 'Utilizadores'
-                    },
-                    messages: {
-                        title: 'Mensagens'
-                    },
-                    loginPage: {
-                        enterCredentials: 'Dados de acesso...',
-                        userName: 'Utilizador',
-                        password: 'Password',
-                        btnLogin: 'Entrar',
-                        backToPublicHome: 'Página inicial'
-                    },
-                    searchBar: {
-                        defaultSearchBarLabel: "Pesquisar..."
-                    },
-                    description: {
-                        part1: 'Edit <1>src/App.js</1> and save to reload.',
-                        part2: 'Learn React'
-                    }
-                }
-            }
+        react: {
+            wait: true,
+            useSuspense: false
         }
     });
 
