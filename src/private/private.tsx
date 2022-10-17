@@ -1,9 +1,11 @@
 import { Outlet } from 'react-router-dom';
 import PrivateNavigation from "./navigation/privateNavigation";
 import styles from './private.module.css'
+import { getAppTheme } from "./../api-services/apiUtils";
+
 export function PrivateContainer () {
     return (
-        <div className={styles.main}>
+        <div id="main" className={[styles.main, styles[getAppTheme()]].join(" ")}>
             <div className={styles.navigation}>
                 <PrivateNavigation/>
             </div>

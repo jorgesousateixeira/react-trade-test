@@ -1,2 +1,3 @@
 export const APP_LOGGED_USER_TOKEN = "APP_LOGGED_USER_TOKEN";
 export const APP_LOGGED_USER = "APP_LOGGED_USER";
+export const APP_THEME = "APP_THEME";
