@@ -8,6 +8,7 @@ import {toast} from "react-toastify";
 import {useTranslation} from "react-i18next";
 import { useSpring, animated } from 'react-spring'
 import {Fade} from "../../animations/fade";
+import { LanguagesEnum } from "../../models/clientOnly/languages.enum";
 
 export function Login () {
     const dispatch = useAppDispatch();
@@ -17,12 +18,6 @@ export function Login () {
     const [password, setPassword] = useState('');
 
     const navigate = useNavigate();
-
-
-    const lngs = {
-        en: { nativeName: 'English' },
-        pt: { nativeName: 'Portuguese' }
-    };
 
     const stylesSpring = useSpring({
         from: { opacity: "0" },
@@ -52,7 +47,7 @@ export function Login () {
                 <a>{t('loginPage.backToPublicHome')}</a>
             </Link>
                 <div>
-                    {Object.keys(lngs).map((lng) => (
+                    {Object.values(LanguagesEnum).map((lng) => (
                         <Button key={lng} style={
                             {fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal'}}
                                 type="submit"
