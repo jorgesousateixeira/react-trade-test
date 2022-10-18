@@ -6,7 +6,7 @@ import {FC, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {User} from "../../models/users/user";
 import styles from './privateContainer.module.css';
-import { ThemeEnum } from '../../models/clientOnly/theme.enum';
+import { AppThemeEnum } from '../../models/clientOnly/app-theme.enum';
 import * as localStorageKeys from "./../../local-storage/localStorageKeys";
 import { Divider, ListItemIcon, ListItemText } from '@mui/material';
 import { Logout, Person, Settings, ColorLens, Language } from '@mui/icons-material';
@@ -119,7 +119,7 @@ const PositionedMenu: FC<Props> = ({user}) => {
                 onClose={ handleClose2Theme }
                 anchorOrigin={{ vertical: 'top', horizontal: 'right',}}
                 transformOrigin={{ vertical: 'top', horizontal: 'right',}}>
-                {Object.values(ThemeEnum).map((thm) => (
+                {Object.values(AppThemeEnum).map((thm) => (
                     <MenuItem onClick={(event) => handleCloseTheme(event, thm)} style={{fontWeight: getAppTheme() === thm ? 'bold' : 'normal'}}>{thm}</MenuItem>
                 ))}
             </Menu>

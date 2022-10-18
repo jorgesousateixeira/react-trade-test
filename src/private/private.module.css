@@ -69,24 +69,6 @@
     --color-secondary: #FFCC70;
 }
 
-.soft {
-    --side-bar-color-1: #FFCC70;
-    --side-bar-color-2: #ff954a;
-    --side-bar-color-3: #fe6601;
-
-    /* main color */
-    --rgb-main-color: 254, 102, 1;
-    --main-color: #fe6601;
-    --main-color-hover: #ff8826;
-    --color-primary: #fe6601;
-
-    /* secondary color */
-    --rgb-secondary-color: 123, 118, 146;
-    --secondary-color: #7b7692;
-    --secondary-color-hover: #4a4463;
-    --color-secondary: #7b7692;
-}
-
 .main {
     background-color: whitesmoke;
     height: 100vh;
