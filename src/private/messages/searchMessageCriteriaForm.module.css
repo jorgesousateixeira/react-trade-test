@@ -8,26 +8,31 @@
     transition: all 0.3s ease-in-out;
     margin-bottom: 2em;
 }
+.divMessageCriteriaContainer {
+    display: flex;
+    flex-direction: column;
+    max-height: 19em;
+    overflow: hidden;
+    transition: max-height .3s ease-in-out;
+}
 .divMessageCriteria {
+    width: 100%;
     padding: 2.5em;
     display: grid;
     grid-row-gap: var(--search-card-grid-row-gap);
     grid-column-gap: var(--search-card-grid-column-gap);
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto;
     grid-template-areas:
-    "stDate stDate enDate enDate"
-    "origin origin destin destin"
-    "type type . .";
-    max-height: 15em;
-    overflow: hidden;
-    transition: max-height .3s ease-in-out;
+    "stDate stDate enDate enDate type type . . . . . ."
+    "origin origin destin destin . . . . . . . .";
 }
 .closed {
     max-height: 0;
     overflow: hidden;
     transition: max-height .3s ease-in-out;
 }
+.btnSearch { align-self: flex-end; margin: 1em;}
 
 
 

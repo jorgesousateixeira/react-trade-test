@@ -33,7 +33,7 @@
     --nav-border-radius: 10px;
 }
 
-.default {
+.alternative {
     --side-bar-color-1: #FFCC70;
     --side-bar-color-2: #fe6601;
     --side-bar-color-3: #fe6601;
@@ -51,7 +51,7 @@
     --color-secondary: #7b7692;
 }
 
-.alternative {
+.default {
     --side-bar-color-1: #FFCC70;
     --side-bar-color-2: #C850C0;
     --side-bar-color-3: #4158D0;

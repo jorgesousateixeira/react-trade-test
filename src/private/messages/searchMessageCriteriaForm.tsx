@@ -53,7 +53,8 @@ const SearchMessageCriteriaForm: FC<SearchMessageCriteriaFormProps> = ({handleSe
                        isMoreCriteriaOpen={isMoreOptionsOpen}
                        initialTerm={StringUtils.getCurrentDateTimeAsTradeStartId()} />
             <form className={styles.formMessageCriteria} onSubmit={handleSubmit(onSubmit)}>
-                <div className={isMoreOptionsOpen ? styles.divMessageCriteria : styles.closed  }>
+                <div className={isMoreOptionsOpen ? styles.divMessageCriteriaContainer : styles.closed}>
+                    <div className={styles.divMessageCriteria}>
                     {/*Start Date*/}
                     <div className={styles.startDate}>
                         <Controller
@@ -139,11 +140,11 @@ const SearchMessageCriteriaForm: FC<SearchMessageCriteriaFormProps> = ({handleSe
                             }
                         />
                     </div>
-                    {/* Submit */}
-                    <Button variant="contained" type={"submit"}>
-                        Submit
-                    </Button>
                 </div>
+                    {/* Submit */}
+                    <Button className={styles.btnSearch} variant="contained" type={"submit"}>
+                        Submit
+                    </Button></div>
             </form>
         </>
     )
