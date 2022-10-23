@@ -1,7 +1,6 @@
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {getTokenAsync, setActiveComponent} from "../../redux/loginSlice";
 import {NavigationModulesEnum} from "../../models/clientOnly/navigationModulesEnum";
-import SearchBar from "../common/searchBar/searchBar";
 import {SearchMessageCriteria} from "../../models/messages/searchMessageCriteria";
 import {toast} from "react-toastify";
 import {countMessagesAsync, searchMessagesAsync} from "../../redux/messagesSlice";
@@ -10,15 +9,17 @@ import PrivateContainer from "../common/privateContainer";
 import {t} from "i18next";
 import MessageSearchResultTable from "../common/searchResultTables/messageSearchResultTable";
 import moment from "moment";
+import SearchResultPagination from "../common/pagination/searchResultPagination";
+import {useState} from "react";
 
 export function Messages () {
     const dispatch = useAppDispatch();
-    //const [messages, setMessages] = useState<TradeMessage[]>([]);
 
     const messages = useAppSelector((state) => state.messages.messages);
     const countMessages = useAppSelector((state) => state.messages.count);
 
     dispatch(setActiveComponent(NavigationModulesEnum.Messages));
+    const [searchTerm, setSearchTerm] = useState<string>('');
 
     const performSearch = async (data: any) => {
         console.log('Performing search: ' + JSON.stringify(data));
@@ -48,6 +49,7 @@ export function Messages () {
         }
     }
     const performSearchByTerm = async (term: string) => {
+        setSearchTerm(term);
         if (term.length === 9 || term.length === 11 ||  term.length === 13) {
             term = term + '0'
         }
@@ -60,10 +62,15 @@ export function Messages () {
         await performSearch( {StartDate: startDate});
     }
 
+    const handlePageChange = async (pageNumber: number) => {
+        console.log('switching to page by term: ' + searchTerm + ' :' + pageNumber);
+        await performSearchByTerm( searchTerm);
+    }
+
     return (
         <PrivateContainer title={t('messages.title')}>
-            <h2>#{countMessages}</h2>
             <SearchMessageCriteriaForm handleSearchByFullCriteria={performSearch} handleSearchByTerm={performSearchByTerm} />
+            <SearchResultPagination totalCount={countMessages} handlePageChange={handlePageChange}/>
             <MessageSearchResultTable messages={messages} />
         </PrivateContainer>
 
