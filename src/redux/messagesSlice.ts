@@ -34,6 +34,21 @@ export const searchMessagesAsync = createAsyncThunk(
         return response;
     }
 );
+export const countMessagesAsync = createAsyncThunk(
+    'messages/count',
+    async (criteria: SearchMessageCriteria, { rejectWithValue }) => {
+        const response = await MessageService.countMessages(criteria);
+        // The value we return becomes the `fulfilled` action payload
+        if (response) {
+            if (response.IsValid) {
+                return response;
+            } else {
+                return rejectWithValue(response.Errors);
+            }
+        }
+        return response;
+    }
+);
 
 export const getMessageByIdAsync = createAsyncThunk(
     'messages/getById',
@@ -59,6 +74,8 @@ export const messagesSlice = createSlice({
         // Add reducers for additional action types here, and handle loading state as needed
         builder.addCase(searchMessagesAsync.fulfilled, (state:MessagesState, action) => {
             state.messages = action.payload ? action.payload.ResultData : [];
+        }).addCase(countMessagesAsync.fulfilled, (state:MessagesState, action) => {
+            state.count = action.payload ? action.payload.ResultData : -1;
         }).addCase(getMessageByIdAsync.fulfilled, (state:MessagesState, action) => {
             state.currentMessage = action.payload ? action.payload.ResultData : null;
         })
