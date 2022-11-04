@@ -90,7 +90,7 @@ export function Login () {
                                 ))}
                             </div>
                         </div>
-                        <div className={styles.loginTextOverImage}> SOME TEXT OVER IMAGE</div>
+                        <div className={styles.loginTextOverImage}> <h1>Note</h1>SOME TEXT OVER IMAGE</div>
                     </div>
                 </div>
             </Fade>
