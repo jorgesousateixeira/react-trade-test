@@ -12,7 +12,7 @@ interface MessageSearchResultProps {
 const MessageSearchResultTable: FC<MessageSearchResultProps> = ({messages}) => {
     return (
         <>
-            {messages?.length !== 0 &&
+            {messages && messages?.length !== 0 &&
                 <table className={[styles2.animatedFadein, 'minimal-table'].join(" ")}>
                     <thead>
                     <th>Id</th>

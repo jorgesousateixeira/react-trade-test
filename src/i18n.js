@@ -43,7 +43,7 @@ i18n
         defaultNS: 'Trade-Client',
         fallbackNS: 'Trade-Client',
         ns: ['Trade-Client'],
-        debug: true,
+        debug: false,
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
         },
