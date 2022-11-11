@@ -1,5 +1,3 @@
-import {useAppDispatch} from "../../app/hooks";
-import {setActiveComponent} from "../../redux/loginSlice";
 import {NavigationModulesEnum} from "../../models/clientOnly/navigationModulesEnum";
 import {SearchMessageCriteria} from "../../models/messages/searchMessageCriteria";
 import {toast} from "react-toastify";
@@ -9,16 +7,18 @@ import {t} from "i18next";
 import MessageSearchResultTable from "../common/searchResultTables/messageSearchResultTable";
 import moment from "moment";
 import SearchResultPagination from "../common/pagination/searchResultPagination";
-import {useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import { useQuery } from "react-query";
 import MessageService from "../../api-services/messageService";
 import { ResultMessage } from "../../models/resultMessage/resultMessage";
 import { TradeMessage } from "../../models/messages/message";
-import { Loader } from "../../shared/loader/loader";
+import { Loader } from "../../shared/components/loader/loader";
+import { AppContext } from "../../shared/context/app.context";
 
 export function Messages2 () {
-    const dispatch = useAppDispatch();
-    dispatch(setActiveComponent(NavigationModulesEnum.Messages));
+    const [ AppValue, setAppValue ] = useContext(AppContext);
+    AppValue.activeComponent = NavigationModulesEnum.Messages;
+    useEffect(() => { setAppValue({...AppValue}); }, []);
 
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [searchCriteria, setSearchCriteria] = useState<SearchMessageCriteria>({} as SearchMessageCriteria);

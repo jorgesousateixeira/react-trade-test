@@ -1,12 +1,13 @@
-import {useAppDispatch} from "../../app/hooks";
-import {setActiveComponent} from "../../redux/loginSlice";
 import {NavigationModulesEnum} from "../../models/clientOnly/navigationModulesEnum";
 import {t} from "i18next";
 import PrivateContainer from "../common/privateContainer";
+import { useContext, useEffect } from "react";
+import { AppContext } from "../../shared/context/app.context";
 
 export function Partners () {
-    const dispatch = useAppDispatch();
-    dispatch(setActiveComponent(NavigationModulesEnum.Partners));
+    const [ AppValue, setAppValue ] = useContext(AppContext);
+    AppValue.activeComponent = NavigationModulesEnum.Partners;
+    useEffect(() => { setAppValue({...AppValue}); }, []);
 
     return (
         <PrivateContainer title={t('partners.title')}>

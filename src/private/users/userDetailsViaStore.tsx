@@ -1,20 +1,19 @@
-import {FC, useEffect, useState} from "react";
-import {User} from "../../models/users/user";
+import { useContext, useEffect} from "react";
 import PrivateContainer from "../common/privateContainer";
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import {searchMessagesAsync} from "../../redux/messagesSlice";
-import {getLoggedUserByIdAsync, getTokenAsync, setActiveComponent} from "../../redux/loginSlice";
-import {toast} from "react-toastify";
 import {getUserByIdAsync} from "../../redux/usersSlice";
-import {SearchMessageCriteria} from "../../models/messages/searchMessageCriteria";
 import UserDetailsPresenter from "./userDetailsPresenter";
 import { NavigationModulesEnum } from "../../models/clientOnly/navigationModulesEnum";
+import { AppContext } from "../../shared/context/app.context";
 
 const UserDetails = () => {
+    const [ AppValue, setAppValue ] = useContext(AppContext);
+    AppValue.activeComponent = NavigationModulesEnum.Users;
+    useEffect(() => { setAppValue({...AppValue}); }, []);
+
     let {id} = useParams();
     const dispatch = useAppDispatch();
-    dispatch(setActiveComponent(NavigationModulesEnum.Users));
 
     const user = useAppSelector((state) => state.users.user)
 

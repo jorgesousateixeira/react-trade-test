@@ -2,7 +2,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import {FC, useState} from "react";
+import {FC, useState, useContext, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import {User} from "../../models/users/user";
 import styles from './privateContainer.module.css';
@@ -13,11 +13,13 @@ import { Logout, Person, Settings, ColorLens, Language } from '@mui/icons-materi
 import { LanguagesEnum } from '../../models/clientOnly/languages.enum';
 import i18n from '../../i18n';
 import { getAppTheme } from '../../api-services/apiUtils';
+import { AppContext } from '../../shared/context/app.context';
 
 interface Props {
     user: User | undefined;
 }
 const PositionedMenu: FC<Props> = ({user}) => {
+    const [ AppValue, setAppValue ] = useContext(AppContext);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [anchorThemeEl, setAnchorThemeEl] = useState<null | HTMLElement>(null);
     const [anchorLangEl, setAnchorLangEl] = useState<null | HTMLElement>(null);
@@ -47,6 +49,8 @@ const PositionedMenu: FC<Props> = ({user}) => {
     const handleCloseTheme = (event: any, value: string) => {
         handleCloseAll();
         localStorage.setItem(localStorageKeys.APP_THEME, value);
+        AppValue.theme = value;
+        setAppValue({...AppValue});
     };
     const handleCloseLang = (event: any, value: string) => {
         handleCloseAll();

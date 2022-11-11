@@ -16,6 +16,7 @@ import UserDetails from "./private/users/userDetailsViaStore";
 import MessageDetails from "./private/message-details/messageDetails";
 import { useTranslation } from 'react-i18next';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { AppProvider } from './shared/context/app.context';
 
 function App() {
   const { ready } = useTranslation('translation');
@@ -24,23 +25,26 @@ function App() {
     return (
         <div className="App">
           <QueryClientProvider client={client}>
-            <Routes>
-                <Route path="/" element={<PublicHome />} />
-                <Route path="/public" element={<PublicHome />} />
-                <Route path="/public/login" element={<Login />} />
-                <Route path="/private" element={<PrivateContainer />}>
-                    <Route path='/private/home' element={<PrivateHome/>}/>
-                    <Route path='/private/messages' element={<Messages2/>}/>
-                    <Route path='/private/message/:id' element={<MessageDetails />}/>
-                    <Route path='/private/documents' element={<Documents/>}/>
-                    <Route path='/private/partners' element={<Partners/>}/>
-                    <Route path='/private/users' element={<Users />}/>
-                    <Route path="/private/users/:id" element={<UserDetails />} />
-                    <Route path='/private/settings' element={<Settings/>}/>
-                    <Route path='/private/admin' element={<Administration/>}/>
-                </Route>
-            </Routes>
-            <ToastContainer autoClose={3000} hideProgressBar />
+            <AppProvider>
+              <Routes>
+                  <Route path="/" element={<PublicHome />} />
+                  <Route path="/public" element={<PublicHome />} />
+                  <Route path="/public/login" element={<Login />} />
+                  <Route path="/private" element={<PrivateContainer />}>
+                      <Route path='/private/home' element={<PrivateHome/>}/>
+                      <Route path='/private/messages' element={<Messages2/>}/>
+                      <Route path='/private/message/:id' element={<MessageDetails />}/>
+                      <Route path='/private/documents' element={<Documents/>}/>
+                      <Route path='/private/partners' element={<Partners/>}/>
+                      <Route path='/private/users' element={<Users />}/>
+                      <Route path="/private/users/:id" element={<UserDetails />} />
+                      <Route path='/private/settings' element={<Settings/>}/>
+                      <Route path='/private/admin' element={<Administration/>}/>
+                  </Route>
+              </Routes>
+              <ToastContainer autoClose={3000} hideProgressBar />
+            </AppProvider>
+
           </QueryClientProvider>
         </div>
     );

@@ -7,11 +7,15 @@ import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {searchUsersAsync} from "../../redux/usersSlice";
 import UserList from "./userList";
 import {t} from "i18next";
+import { useContext, useEffect } from "react";
+import { AppContext } from "../../shared/context/app.context";
 
 export function Users () {
+    const [ AppValue, setAppValue ] = useContext(AppContext);
+    AppValue.activeComponent = NavigationModulesEnum.Admin;
+    useEffect(() => { setAppValue({...AppValue}); }, []);
+    
     const dispatch = useAppDispatch();
-
-    dispatch(setActiveComponent(NavigationModulesEnum.Admin));
     const users = useAppSelector((state) => state.users.users);
 
     const performSearch = async (searchTerm: string) => {
