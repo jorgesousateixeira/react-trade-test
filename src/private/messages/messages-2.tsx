@@ -14,6 +14,7 @@ import { useQuery } from "react-query";
 import MessageService from "../../api-services/messageService";
 import { ResultMessage } from "../../models/resultMessage/resultMessage";
 import { TradeMessage } from "../../models/messages/message";
+import { Loader } from "../../shared/loader/loader";
 
 export function Messages2 () {
     const dispatch = useAppDispatch();
@@ -96,7 +97,8 @@ export function Messages2 () {
         <PrivateContainer title={t('messages.title')}>
             <SearchMessageCriteriaForm handleSearchByFullCriteria={performSearch} handleSearchByTerm={performSearchByTerm} />
             {(countMessages.data && countMessages.data > 0) && <SearchResultPagination totalCount={countMessages.data} handlePageChange={handlePageChange}/>}
-            <MessageSearchResultTable messages={searchMessages.data} />
+            { searchMessages.isLoading && <Loader/> }
+            { !searchMessages.isLoading && <MessageSearchResultTable messages={searchMessages.data} />}
         </PrivateContainer>
 
     )
